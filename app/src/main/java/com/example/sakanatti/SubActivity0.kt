@@ -14,8 +14,10 @@ class SubActivity0 : AppCompatActivity() {
         //クリック処理↓
         bt0.setOnClickListener{
             tx1.text = "評価済み"
+
             //var intent = Intent(this,MainActivity::class.java)
             //startActivity(intent)
+
             bt0.setEnabled(false)
         }
     }

@@ -1,16 +1,13 @@
 package com.example.sakanatti
 
-import android.R.attr
 import android.content.Context
-import android.graphics.*
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.R.attr.src
-
-
-
+import androidx.appcompat.app.AppCompatActivity
 
 
 class FishActivity : AppCompatActivity() {
@@ -21,7 +18,6 @@ class FishActivity : AppCompatActivity() {
     }
     internal inner class MyView(context: Context) : View(context) {
         private var paint: Paint = Paint()
-        private val TAG = "fish canvas"
         // 描画するラインの太さ
         private val lineStrokeWidth = 20f
 
@@ -30,17 +26,15 @@ class FishActivity : AppCompatActivity() {
 
         override fun onDraw(canvas: Canvas){
 
-            // ペイントする色の設定
+
             val bmp = BitmapFactory.decodeResource(resources, R.drawable.fish2_blue)
-            val w: Int = bmp.width
-            val h: Int = bmp.height
-            Log.i(TAG, w.toString())
-            Log.i(TAG,h.toString())
-            val dst = Rect(0, 0, 500, 400)
+            val dst = Rect(canvas.width/2, canvas.height/2,  + canvas.width/2 + 500,canvas.height/2 + 400)
+
             val src = null
             canvas.drawBitmap(bmp, src, dst, paint)
         }
     }
 }
+
 
 

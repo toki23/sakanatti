@@ -12,6 +12,7 @@
         <activity
             android:name=".FishActivity"
             android:exported="true" />
+        <activity android:name=".SubActivity0" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,8 +17,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btn2.setOnClickListener {
-            //val intent = Intent(this,ThirdActivity::class.java)
-            //startActivity(intent)
+            val intent = Intent(this,FishActivity::class.java)
+            startActivity(intent)
         }
     }
 }

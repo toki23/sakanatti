@@ -13,11 +13,11 @@ class MainActivity : AppCompatActivity() {
         val btn1:Button= findViewById(R.id.btn1)
         val btn2:Button = findViewById(R.id.btn2)
         btn1.setOnClickListener{
-            val intent = Intent(this,SecondActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this,SecondActivity::class.java)
+//            startActivity(intent)
         }
         btn2.setOnClickListener {
-            val intent = Intent(this,ThirdActivity::class.java)
+            val intent = Intent(this,FishActivity::class.java)
             startActivity(intent)
         }
     }

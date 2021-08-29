@@ -42,8 +42,9 @@ class FishActivity : AppCompatActivity() {
             canvas.drawBitmap(bmp, src, dst, paint)
             Log.d("aa", "fjdajf")
             invalidate()
-        }
     }
+    }
+
 }
 
 

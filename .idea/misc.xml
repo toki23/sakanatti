@@ -7,6 +7,9 @@
         <entry key="..\:/Users/blanc/AndroidStudioProjects/sakanatti/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/haruy/Documents/sakanatti/app/src/main/res/layout/activity_fish.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/haruy/Documents/sakanatti/app/src/main/res/layout/activity_main.xml" value="0.1118659420289855" />
+        <entry key="..\:/Users/haruy/Documents/sakanatti/app/src/main/res/layout/activity_second.xml" value="0.11956521739130435" />
+        <entry key="..\:/Users/haruy/Documents/sakanatti/app/src/main/res/layout/activity_sub0.xml" value="0.1" />
+        <entry key="..\:/Users/haruy/Documents/sakanatti/app/src/main/res/layout/activity_third.xml" value="0.11956521739130435" />
       </map>
     </option>
   </component>
@@ -15,5 +18,8 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="SuppressKotlinCodeStyleNotification">
+    <option name="disableForAll" value="true" />
   </component>
 </project>

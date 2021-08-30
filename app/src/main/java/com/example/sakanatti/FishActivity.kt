@@ -27,17 +27,10 @@ class FishActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fish)
         val btn1: Button = findViewById(R.id.id)
         val tx1: TextView = findViewById(R.id.textView)
-        //val img: ImageView = findViewById(R.id.image)
-        //textviewの定義↓
-        val tx0:TextView = TextView(this)
-        tx0.textSize = 5F
-        tx0.typeface = (Typeface.DEFAULT)
-        //tx0.layoutParams = LayoutParams
-        //tx0.gravity =Gravity.CENTER
         fun main(args: Array<String>) {
             val randomInt = Random.nextInt(10)
         }
-
+           tx1.left
 
 
         btn1.setOnClickListener {

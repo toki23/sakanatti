@@ -286,6 +286,15 @@
                 </RadioGroup>
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="評価してない項目があります"
+                android:textColor="#FF0808"
+                android:textSize="14sp" />
+
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"

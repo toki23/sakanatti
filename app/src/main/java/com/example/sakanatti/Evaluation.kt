@@ -1,9 +1,11 @@
 package com.example.sakanatti
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -35,12 +37,20 @@ class Evaluation : AppCompatActivity() {
                 }
             }
         }
+
+        val text = findViewById<TextView>(R.id.textView5)
+        text.visibility = View.GONE
         findViewById<Button>(R.id.button).setOnClickListener {
             val s1: Int = viewModel.evaluation.value?.get(0)?.value ?: 0
             val s2: Int = viewModel.evaluation.value?.get(1)?.value ?: 0
             val s3: Int = viewModel.evaluation.value?.get(2)?.value ?: 0
             val s4: Int = viewModel.evaluation.value?.get(3)?.value ?: 0
-            Database.insert(applicationContext, s1, s2, s3, s4)
+            if(s1 == 0 || s2 == 0 || s3 == 0 || s4 == 0) {
+                text.visibility = View.VISIBLE
+            } else {
+                Database.insert(applicationContext, s1, s2, s3, s4)
+                finish()
+            }
         }
     }
 

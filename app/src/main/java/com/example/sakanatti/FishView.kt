@@ -7,6 +7,7 @@ import android.os.Parcelable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import com.example.sakanatti.R
 import java.lang.Math.sin
 
@@ -19,17 +20,20 @@ class FishView  @JvmOverloads constructor(
 
     var paint: Paint = Paint()
     override fun onDraw(canvas: Canvas) {
+        var fishL = canvas.width / 3 + (150 * sin(0.1 * i.toDouble())).toInt()
+        var fishT = canvas.height / 2 + (50 * sin(0.05 * i.toDouble())).toInt()
+        var fishR = canvas.width / 3 + 500 + (150 * sin(0.1 * i.toDouble())).toInt()
+        var fishB = canvas.height / 2 + 400 + (50 * sin(0.05 * i.toDouble())).toInt()
         val bmp = BitmapFactory.decodeResource(resources, R.drawable.fish2_blue)
-        val dst = Rect(
-            canvas.width / 3 + (150 * sin(0.1 * i.toDouble())).toInt(),
-            canvas.height / 2 + (50 * sin(0.05 * i.toDouble())).toInt(),
-            +canvas.width / 3 + 500 + (150 * sin(0.1 * i.toDouble())).toInt(),
-            canvas.height / 2 + 400 + (50 * sin(0.05 * i.toDouble())).toInt()
-        )
+        val bmp0 = BitmapFactory.decodeResource(resources, R.drawable.e0760)
+        val dst = Rect(fishL,fishT,fishR,fishB)
+        val dst0 = Rect(fishL-200, fishT-300, fishR-300, fishB-300)
         i++
 
         val src = null
         canvas.drawBitmap(bmp, src, dst, paint)
+        //canvas.drawBitmap(bmp0,src,dst0,paint)
+
         invalidate()
     }
 

@@ -10,11 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sakanatti">
         <activity
+            android:name=".Evaluation"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity
             android:name=".FishActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity android:name=".SubActivity0" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -27,12 +27,13 @@ class FishView  @JvmOverloads constructor(
         val bmp = BitmapFactory.decodeResource(resources, R.drawable.fish2_blue)
         val bmp0 = BitmapFactory.decodeResource(resources, R.drawable.e0760)
         val dst = Rect(fishL,fishT,fishR,fishB)
-        val dst0 = Rect(fishL-200, fishT-300, fishR-300, fishB-300)
+        val dst0 = Rect(canvas.width / 3 -200, canvas.height / 2 -500,
+            canvas.width / 3 +300, canvas.height / 2 -100)
         i++
 
         val src = null
         canvas.drawBitmap(bmp, src, dst, paint)
-        //canvas.drawBitmap(bmp0,src,dst0,paint)
+        canvas.drawBitmap(bmp0,src,dst0,paint)
 
         invalidate()
     }

@@ -28,18 +28,13 @@ class FishActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fish)
         val btn1: Button = findViewById(R.id.id)
         val tx1: TextView = findViewById(R.id.textView)
-
-        fun main(args: Array<String>) {
-            val randomInt = Random.nextInt(10)
-
-            println(randomInt)
-        }
+        val data = Database.select(applicationContext)
         btn1.setOnClickListener {
-            //val intent = Intent(this,{}::class.java)
-            //startActivity(intent)
-
-            var Score0 = Random.nextInt(5)
-            when (Score0) {
+            var score0 = data[0]
+            var score1 = data[1]
+            var score2 = data[2]
+            var score3 = data[3]
+            when (score0) {
                 1 -> {
                     tx1.text = "床がかなり散らかっています。"
                 }
@@ -57,35 +52,66 @@ class FishActivity : AppCompatActivity() {
                 }
 
             }
+            /*when (score1) {//1
+                1 -> {
+                    tx1.text = "机の上がかなり散らかっています。"
+                }
+                2 -> {
+                    tx1.text = "机が散らかっています。"
+                }
+                3 -> {
+                    tx1.text = "机を掃除しよう。"
+                }
+                4 -> {
+                    tx1.text = "机を確認しよう。"
+                }
+                5 -> {
+                    tx1.text = "机はきれいですね。"
+                }
+
+
+            }
+            when (score2) {//2
+                1 -> {
+                    tx1.text = "本がかなり散らかっています。"
+                }
+                2 -> {
+                    tx1.text = "本が散らかっています。"
+                }
+                3 -> {
+                    tx1.text = "本を掃除しよう。"
+                }
+                4 -> {
+                    tx1.text = "本を確認しよう。"
+                }
+                5 -> {
+                    tx1.text = "本はきれいですね。"
+                }
+
+
+            }
+            when (score3) {//3
+                1 -> {
+                    tx1.text = "服がかなり散らかっています。"
+                }
+                2 -> {
+                    tx1.text = "服が散らかっています。"
+                }
+                3 -> {
+                    tx1.text = "服を掃除しよう。"
+                }
+                4 -> {
+                    tx1.text = "服を確認しよう。"
+                }
+                5 -> {
+                    tx1.text = "服はきれいですね。"
+                }
+
+
+                }*/
+            }
         }
     }
-
-    inner class MyView(context: Context) : View(context) {
-        private var paint: Paint = Paint()
-
-        // 描画するラインの太さ
-        //private val lineStrokeWidth = 20f
-    
-        init {
-        }
-
-        //
-        override fun onDraw(canvas: Canvas) {
-
-
-            val fish = BitmapFactory.decodeResource(resources, R.drawable.fish2_blue)
-            //val sb = BitmapFactory.decodeResource(resources, R.drawable.speechballoon)
-            val dst = Rect(width / 2, height / 2, +width / 2 + 500, height / 2 + 400)
-            //val dst1 =Rect(width / 2 - 350, height / 2 - 150, +width / 2 + 100, height / 2 + 180)
-            val src = null
-            canvas.drawBitmap(fish, src, dst, paint)
-            //canvas.drawBitmap(sb, src, dst1, paint)
-
-        }
-
-    }
-    }
-
 
 
 

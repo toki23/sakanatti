@@ -66,12 +66,34 @@ class Database(
             database.insert("score", null, values)
             database.close()
             dbHelper.close()
-            Log.i("sample", s2.toString())
         }
 
-        fun select(context: Context) {
+        fun select(context: Context): List<Int> {
             val dbHelper = Database(context, "score", null, 1)
             val database = dbHelper.readableDatabase
+            val data = mutableListOf(0, 0, 0, 0)
+            val cursor = database.rawQuery("select * from score", null)
+            if (cursor.count > 0) {
+                cursor.moveToFirst()
+                while (!cursor.isAfterLast) {
+                    Log.i("sample", cursor.getInt(1).toString())
+                    data[0] = (cursor.getInt(1))
+                    data[1] = (cursor.getInt(2))
+                    data[2] = (cursor.getInt(3))
+                    data[3] = (cursor.getInt(4))
+                    cursor.moveToNext()
+                }
+            }
+            database.close()
+            dbHelper.close()
+            Log.i("sample", data.toString())
+            return data
+        }
+
+        fun evaluation(context: Context) {
+            val dbHelper = Database(context, "score", null, 1)
+            val database = dbHelper.readableDatabase
+
             database.close()
             dbHelper.close()
         }

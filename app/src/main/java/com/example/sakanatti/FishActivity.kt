@@ -121,6 +121,86 @@ class FishActivity : AppCompatActivity() {
 
                }
             }
+            when (count) {
+                1 -> when (score0) {
+                    1 -> {
+                        img2.visibility = View.VISIBLE
+
+                    }
+                    2 -> {
+                        img2.visibility = View.VISIBLE
+
+                    }
+                    3 -> {
+
+                    }
+                    4 -> {
+
+                    }
+                    5 -> {
+
+                    }
+                }
+                2 -> when (score1) {//1
+                    1 -> {
+                        img3.visibility = View.VISIBLE
+
+                    }
+                    2 -> {
+                        img3.visibility = View.VISIBLE
+
+                    }
+                    3 -> {
+
+                    }
+                    4 -> {
+
+                    }
+                    5 -> {
+
+                    }
+                }
+                3 -> when (score2) {//2
+                    1 -> {
+                        img4.visibility = View.VISIBLE
+
+                    }
+                    2 -> {
+                        img4.visibility = View.VISIBLE
+
+                    }
+                    3 -> {
+
+                    }
+                    4 -> {
+
+                    }
+                    5 -> {
+
+                    }
+                }
+                4 -> when (score3) {//3
+                    1 -> {
+                        img5.visibility = View.VISIBLE
+
+                    }
+                    2 -> {
+                        img5.visibility = View.VISIBLE
+
+                    }
+                    3 -> {
+
+                    }
+                    4 -> {
+
+                    }
+                    5 -> {
+
+                    }
+
+
+                }
+            }
         }
     }
 }

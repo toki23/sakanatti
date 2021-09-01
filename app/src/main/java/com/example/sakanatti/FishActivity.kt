@@ -28,19 +28,23 @@ class FishActivity : AppCompatActivity() {
         var count: Int = 0
         val btn1: Button = findViewById(R.id.id)
         val tx1: TextView = findViewById(R.id.textView)
-        val imageView = findViewById(R.id.img2)
-        imageView.setImageResource(R.drawable.beer_1)
-        val imageView = findViewById(R.id.img3)
-        imageView.setImageResource(R.drawable.gomi_3)
-        val imageView = findViewById(R.id.img4)
-        imageView.setImageResource(R.drawable.banana_1)
-        val imageView = findViewById(R.id.img5)
-        imageView.setImageResource(R.drawable.sinnbunn_1)
+        val img2 :ImageView= findViewById(R.id.img2)
+        img2.setImageResource(R.drawable.beer_1)
+        val img3 :ImageView= findViewById(R.id.img3)
+        img3.setImageResource(R.drawable.gomi_3)
+        val img4 :ImageView= findViewById(R.id.img4)
+        img4.setImageResource(R.drawable.banana_1)
+        val img5 :ImageView= findViewById(R.id.img5)
+        img5.setImageResource(R.drawable.sinnbunn_1)
         val data = Database.select(applicationContext)
         var score0 = data[0]
         var score1 = data[1]
         var score2 = data[2]
         var score3 = data[3]
+        img2.visibility = View.INVISIBLE
+        img3.visibility = View.INVISIBLE
+        img4.visibility = View.INVISIBLE
+        img5.visibility = View.INVISIBLE
         btn1.setOnClickListener {
             count++
 

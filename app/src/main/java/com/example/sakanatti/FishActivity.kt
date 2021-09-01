@@ -14,7 +14,6 @@ import android.os.Parcelable
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -28,23 +27,11 @@ class FishActivity : AppCompatActivity() {
         var count: Int = 0
         val btn1: Button = findViewById(R.id.id)
         val tx1: TextView = findViewById(R.id.textView)
-        val img2 :ImageView= findViewById(R.id.img2)
-        img2.setImageResource(R.drawable.beer_1)
-        val img3 :ImageView= findViewById(R.id.img3)
-        img3.setImageResource(R.drawable.gomi_3)
-        val img4 :ImageView= findViewById(R.id.img4)
-        img4.setImageResource(R.drawable.banana_1)
-        val img5 :ImageView= findViewById(R.id.img5)
-        img5.setImageResource(R.drawable.sinnbunn_1)
         val data = Database.select(applicationContext)
         var score0 = data[0]
         var score1 = data[1]
         var score2 = data[2]
         var score3 = data[3]
-        img2.visibility = View.INVISIBLE
-        img3.visibility = View.INVISIBLE
-        img4.visibility = View.INVISIBLE
-        img5.visibility = View.INVISIBLE
         btn1.setOnClickListener {
             count++
 
@@ -120,86 +107,6 @@ class FishActivity : AppCompatActivity() {
 
 
                }
-            }
-            when (count) {
-                1 -> when (score0) {
-                    1 -> {
-                        img2.visibility = View.VISIBLE
-
-                    }
-                    2 -> {
-                        img2.visibility = View.VISIBLE
-
-                    }
-                    3 -> {
-
-                    }
-                    4 -> {
-
-                    }
-                    5 -> {
-
-                    }
-                }
-                2 -> when (score1) {//1
-                    1 -> {
-                        img3.visibility = View.VISIBLE
-
-                    }
-                    2 -> {
-                        img3.visibility = View.VISIBLE
-
-                    }
-                    3 -> {
-
-                    }
-                    4 -> {
-
-                    }
-                    5 -> {
-
-                    }
-                }
-                3 -> when (score2) {//2
-                    1 -> {
-                        img4.visibility = View.VISIBLE
-
-                    }
-                    2 -> {
-                        img4.visibility = View.VISIBLE
-
-                    }
-                    3 -> {
-
-                    }
-                    4 -> {
-
-                    }
-                    5 -> {
-
-                    }
-                }
-                4 -> when (score3) {//3
-                    1 -> {
-                        img5.visibility = View.VISIBLE
-
-                    }
-                    2 -> {
-                        img5.visibility = View.VISIBLE
-
-                    }
-                    3 -> {
-
-                    }
-                    4 -> {
-
-                    }
-                    5 -> {
-
-                    }
-
-
-                }
             }
         }
     }

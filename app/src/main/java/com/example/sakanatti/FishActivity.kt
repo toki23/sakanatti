@@ -28,6 +28,14 @@ class FishActivity : AppCompatActivity() {
         var count: Int = 0
         val btn1: Button = findViewById(R.id.id)
         val tx1: TextView = findViewById(R.id.textView)
+        val imageView = findViewById(R.id.img2)
+        imageView.setImageResource(R.drawable.beer_1)
+        val imageView = findViewById(R.id.img3)
+        imageView.setImageResource(R.drawable.gomi_3)
+        val imageView = findViewById(R.id.img4)
+        imageView.setImageResource(R.drawable.banana_1)
+        val imageView = findViewById(R.id.img5)
+        imageView.setImageResource(R.drawable.sinnbunn_1)
         val data = Database.select(applicationContext)
         var score0 = data[0]
         var score1 = data[1]

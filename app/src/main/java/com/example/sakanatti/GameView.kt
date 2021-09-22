@@ -9,6 +9,10 @@ import android.util.Log
 import android.view.View
 import com.example.sakanatti.R
 import java.lang.Math.sin
+import android.view.MotionEvent
+
+
+
 
 class GameView  @JvmOverloads constructor(
     context: Context,
@@ -17,12 +21,15 @@ class GameView  @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     var paint: Paint = Paint()
+
+    private var cx = 0
+    private var cy = 0
     override fun onDraw(canvas: Canvas) {
 
-        var fishL = canvas.width / 3
-        var fishT = canvas.height / 2
-        var fishR = canvas.width / 3 + 500
-        var fishB = canvas.height / 2 + 400
+        var fishL = cx
+        var fishT = canvas.height/2
+        var fishR = cx + 500
+        var fishB =canvas.height/2+ 400
         val bmp = BitmapFactory.decodeResource(resources, R.drawable.fish2_blue)
         val dst = Rect(fishL,fishT,fishR,fishB)
 
@@ -31,6 +38,26 @@ class GameView  @JvmOverloads constructor(
         val src = null
         canvas.drawBitmap(bmp, src, dst, paint)
         invalidate()
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {    // (7)
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> assert(
+                true // 何もしない
+            )
+            MotionEvent.ACTION_MOVE -> {
+                cx = event.x.toInt() // (10)
+                cy = event.y.toInt() // (11)
+            }
+            MotionEvent.ACTION_UP -> assert(
+                true // 何もしない
+            )
+            else -> assert(
+                true // 何もしない
+            )
+        }
+        invalidate() // (13)
+        return true // (14)
     }
 
 }

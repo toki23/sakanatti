@@ -1,4 +1,5 @@
 package com.example.sakanatti
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -115,8 +116,8 @@ class FishActivity : AppCompatActivity() {
            }
                 5 -> {
                     tx1.text = "タップしてゲームを開始"
-                    //val intent = Intent(this,SubActivity0::class.java)
-                    //startActivity(intent)
+                    val intent = Intent(this,GameView::class.java)
+                    startActivity(intent)
                }
             }
         }

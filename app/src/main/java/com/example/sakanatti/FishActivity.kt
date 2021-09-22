@@ -38,7 +38,7 @@ class FishActivity : AppCompatActivity() {
             if (score0 == 6 && score1 == 6 && score2 == 6 && score3 == 6 && count ==1){
                 tx1.text = "タップしてゲームを開始"
             }else if (score0 == 6 && score1 == 6 && score2 == 6 && score3 == 6 && count ==2){
-                val intent = Intent(this,GameView::class.java)
+                val intent = Intent(applicationContext,FishGame::class.java)
                 startActivity(intent)
             }
 
@@ -124,7 +124,7 @@ class FishActivity : AppCompatActivity() {
            }
            5,6-> {if (count ==5){
                tx1.text = "タップしてゲームを開始"
-           }else{val intent = Intent(this,GameView::class.java)
+           }else{val intent = Intent(applicationContext,FishGame::class.java)
                startActivity(intent)   }
 
                }

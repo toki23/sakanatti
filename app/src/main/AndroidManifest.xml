@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sakanatti">
         <activity
+            android:name=".FishGame"
+            android:exported="true" />
+        <activity
             android:name=".fishgameActivity"
             android:exported="true" />
         <activity

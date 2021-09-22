@@ -27,10 +27,10 @@ class GameView  @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
 
         var fishL = cx
-        var fishT = canvas.height/2
-        var fishR = cx + 500
-        var fishB =canvas.height/2+ 400
-        val bmp = BitmapFactory.decodeResource(resources, R.drawable.fish2_blue)
+        var fishT = canvas.height/2 + 200
+        var fishR = cx + 300
+        var fishB =canvas.height/2+ 600
+        val bmp = BitmapFactory.decodeResource(resources, R.drawable.silhouette_fish_top)
         val dst = Rect(fishL,fishT,fishR,fishB)
 
 

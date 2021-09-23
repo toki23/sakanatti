@@ -103,4 +103,13 @@ class GameView @JvmOverloads constructor(
             bottom = y + 150
         }
     }
+<<<<<<< Updated upstream
 }
+=======
+
+
+}
+
+
+
+>>>>>>> Stashed changes

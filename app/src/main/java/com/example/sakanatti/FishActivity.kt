@@ -1,4 +1,5 @@
 package com.example.sakanatti
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -34,8 +35,15 @@ class FishActivity : AppCompatActivity() {
 
         btn1.setOnClickListener {
             count++
+            if (score0 == 6 && score1 == 6 && score2 == 6 && score3 == 6 && count ==1){
+                tx1.text = "タップしてゲームを開始"
+            }else if (score0 == 6 && score1 == 6 && score2 == 6 && score3 == 6 && count ==2){
+                val intent = Intent(this,GameView::class.java)
+                startActivity(intent)
+            }
 
-            //textView.text = "${count}"
+
+
             when (count) {
              1 -> when (score0) {
                1 -> {
@@ -55,6 +63,7 @@ class FishActivity : AppCompatActivity() {
                5 -> {
                    tx1.text = "床はきれいですね。"
                }
+
                 }
              2 -> when (score1) {//1
                1 -> {
@@ -113,10 +122,11 @@ class FishActivity : AppCompatActivity() {
                    tx1.text = "服はきれいですね。"
                }
            }
-                5 -> {
-                    tx1.text = "タップしてゲームを開始"
-                    //val intent = Intent(this,SubActivity0::class.java)
-                    //startActivity(intent)
+           5,6-> {if (count ==5){
+               tx1.text = "タップしてゲームを開始"
+           }else{val intent = Intent(this,GameView::class.java)
+               startActivity(intent)   }
+
                }
             }
         }

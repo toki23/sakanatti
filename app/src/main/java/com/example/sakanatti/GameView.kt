@@ -1,10 +1,14 @@
 package com.example.sakanatti
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Rect
 import android.util.AttributeSet
-import android.view.View
+import android.util.Log
 import android.view.MotionEvent
+import android.view.View
 
 
 class GameView @JvmOverloads constructor(
@@ -12,30 +16,36 @@ class GameView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
+    private var cx = 100
 
+    //private var cy = 0
+    private var obstacle = Obstacle(200)
+    private val bmp = BitmapFactory.decodeResource(resources, R.drawable.silhouette_fish_top)
+    private val dst = Rect()
     var paint: Paint = Paint()
 
-    private var cx = 0
-    private var cy = 0
-    private var i = 0
-
-
-    var obstacle = Obstacle(200)
-
     override fun onDraw(canvas: Canvas) {
-
         obstacle.draw(canvas)
         obstacle.drop()
-        var fishL = cx
-        var fishT = canvas.height / 2 + 200
-        var fishR = cx + 300
-        var fishB = canvas.height / 2 + 600
-        val bmp = BitmapFactory.decodeResource(resources, R.drawable.silhouette_fish_top)
-        val dst = Rect(fishL, fishT, fishR, fishB)
-
-
-        val src = null
-        canvas.drawBitmap(bmp, src, dst, paint)
+        val fishL = cx - 120
+        val fishT = height / 2 + 200
+        val fishR = cx + 120
+        val fishB = height / 2 + 600
+        dst.set(fishL, fishT, fishR, fishB)
+        canvas.drawBitmap(bmp, null, dst, paint)
+        if ((obstacle.left in fishL..fishR || obstacle.right in fishL..fishR) && (obstacle.top in fishT..fishB || obstacle.bottom in fishT..fishB)) {
+            Log.i("aaa", "あたった")
+            /****
+             *
+             *
+             *
+             *    ここに当たった時の処理を書く
+             *
+             *
+             *
+             *
+             */
+        }
         invalidate()
     }
 
@@ -46,7 +56,8 @@ class GameView @JvmOverloads constructor(
             )
             MotionEvent.ACTION_MOVE -> {
                 cx = event.x.toInt() // (10)
-                cy = event.y.toInt() // (11)
+                //cy = event.y.toInt() // (11)
+                performClick()
             }
             MotionEvent.ACTION_UP -> assert(
                 true // 何もしない
@@ -59,36 +70,37 @@ class GameView @JvmOverloads constructor(
         return true // (14)
     }
 
-    inner class Obstacle constructor(_x: Int) {
-        var x: Int = 0
-        var y: Int = 0
-        var Left = 0
-        var Top = 0
-        var Right = 300
-        var Bottom = 300
-        lateinit var canvas: Canvas
+    override fun performClick(): Boolean {
+        super.performClick()
+        return true
+    }
 
-        init {
-            x = _x
-        }
+    inner class Obstacle constructor(
+        private var x: Int,
+        private var y: Int = 0,
+    ) {
+        var left = 0
+            private set
+        var top = 0
+            private set
+        var right = 300
+            private set
+        var bottom = 300
+            private set
+        private val bmp2 = BitmapFactory.decodeResource(resources, R.drawable.beer_1)
+        private val dst2 = Rect(left, top, right, bottom)
 
         fun draw(canvas: Canvas) {
-
-            val bmp = BitmapFactory.decodeResource(resources, R.drawable.beer_1)
-            val dst = Rect(Left, Top, Right, Bottom)
-            val src = null
-            canvas.drawBitmap(bmp, src, dst, paint)
-
+            dst2.set(left, top, right, bottom)
+            canvas.drawBitmap(bmp2, null, dst2, paint)
         }
 
         fun drop() {
-            y++
-            Left = x
-            Top = y
-            Right = x + 300
-            Bottom = y + 300
+            y += 1
+            left = x - 150
+            top = y - 150
+            right = x + 150
+            bottom = y + 150
         }
     }
-
-
 }

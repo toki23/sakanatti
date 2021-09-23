@@ -23,10 +23,21 @@ class GameView @JvmOverloads constructor(
     private val bmp = BitmapFactory.decodeResource(resources, R.drawable.silhouette_fish_top)
     private val dst = Rect()
     var paint: Paint = Paint()
-
+    private var i = 0;
+    private var speed = 4;
     override fun onDraw(canvas: Canvas) {
+        if(i == 0){
+
+            obstacle = Obstacle((0..800).random());
+
+        }
         obstacle.draw(canvas)
         obstacle.drop()
+        i++
+        if(i >= canvas.height/speed){
+            i = 0;
+        }
+        Log.i("canvas",canvas.height.toString())
         val fishL = cx - 120
         val fishT = height / 2 + 200
         val fishR = cx + 120
@@ -96,7 +107,7 @@ class GameView @JvmOverloads constructor(
         }
 
         fun drop() {
-            y += 1
+            y += speed
             left = x - 150
             top = y - 150
             right = x + 150

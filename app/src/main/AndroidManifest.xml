@@ -11,9 +11,11 @@
         android:theme="@style/Theme.Sakanatti">
         <activity
             android:name=".FishGame"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".fishgameActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".Evaluation"

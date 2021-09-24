@@ -109,9 +109,9 @@ class GameView @JvmOverloads constructor(
         fun drop() {
             y += speed
             left = x - 150
-            top = y - 150
+            top = y + 150
             right = x + 150
-            bottom = y + 150
+            bottom = y + 450
         }
     }
 }

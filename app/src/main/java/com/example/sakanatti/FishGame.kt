@@ -48,6 +48,7 @@ class FishGame : AppCompatActivity() {
             try {
                 mCounter = 0
                 while (true) { //あたったときにこのループを抜けだす。
+                    best_score = num.toString()
                     if(finishFlag){
                         if (num > score){
                             Score.set(applicationContext, num)
@@ -57,7 +58,6 @@ class FishGame : AppCompatActivity() {
                             best_score = score.toString()
                             score5.text = best_score
                         }
-
                         break
                     }
                     mHandler.post {
@@ -113,7 +113,6 @@ class FishGame : AppCompatActivity() {
             if (i >= canvas.height / speed) {
                 i = 0;
             }
-            Log.i("canvas", canvas.height.toString())
             val fishL = cx - 120
             val fishT = height / 2 + 200
             val fishR = cx + 120
@@ -121,16 +120,14 @@ class FishGame : AppCompatActivity() {
             dst.set(fishL, fishT, fishR, fishB)
             canvas.drawBitmap(bmp, null, dst, paint)
             if ((obstacle.left + 15 in fishL..fishR || obstacle.right - 15 in fishL..fishR) && (obstacle.top + 15 in fishT..fishB || obstacle.bottom - 15 in fishT..fishB)) {
-                Log.i("aaa", "あたった")
                 val mpaint = Paint();
                 super.onDraw(canvas);
                 mpaint.setTextSize(400f)
 
                 canvas.drawText("終了", 200f, 600f, mpaint);
-                var text = best_score +"pt"
                 mpaint.setTextSize(100f)
                 canvas.drawText("ベストスコア",250f,800f,mpaint)
-                canvas.drawText(text,450F,1000F,mpaint)
+                canvas.drawText("${best_score}pt",450F,1000F,mpaint)
                 finishFlag = true
             }
 
@@ -141,6 +138,7 @@ class FishGame : AppCompatActivity() {
         }
 
         override fun onTouchEvent(event: MotionEvent): Boolean {    // (7)
+            Log.i("sampp", "aaabbb" + best_score)
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> assert(
                     true // 何もしない

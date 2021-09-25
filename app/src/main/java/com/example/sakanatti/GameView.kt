@@ -26,7 +26,7 @@ class GameView @JvmOverloads constructor(
     private var i = 0;
     private var speed = 4;
     override fun onDraw(canvas: Canvas) {
-        if(i == 0){
+        if (i == 0) {
 
             obstacle = Obstacle((0..800).random());
 
@@ -34,19 +34,19 @@ class GameView @JvmOverloads constructor(
         obstacle.draw(canvas)
         obstacle.drop()
         i++
-        if(i >= canvas.height/speed){
+        if (i >= canvas.height / speed) {
             i = 0;
         }
-        Log.i("canvas",canvas.height.toString())
+        Log.i("canvas", canvas.height.toString())
         val fishL = cx - 120
         val fishT = height / 2 + 200
         val fishR = cx + 120
         val fishB = height / 2 + 600
         dst.set(fishL, fishT, fishR, fishB)
         canvas.drawBitmap(bmp, null, dst, paint)
-        if ((obstacle.left in fishL..fishR || obstacle.right in fishL..fishR) && (obstacle.top in fishT..fishB || obstacle.bottom in fishT..fishB)) {
+        if ((obstacle.left + 15 in fishL..fishR || obstacle.right - 15 in fishL..fishR) && (obstacle.top + 15 in fishT..fishB || obstacle.bottom - 15 in fishT..fishB)) {
             Log.i("aaa", "あたった")
-            val mpaint  =  Paint();
+            val mpaint = Paint();
             super.onDraw(canvas);
             mpaint.setTextSize(400f);
             canvas.drawText("終了", 300f, 600f, mpaint);

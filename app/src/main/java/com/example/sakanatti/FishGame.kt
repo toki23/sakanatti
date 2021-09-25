@@ -1,11 +1,11 @@
 package com.example.sakanatti
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 
 class FishGame : AppCompatActivity() {
@@ -28,7 +28,7 @@ class FishGame : AppCompatActivity() {
         val thread = Thread(Runnable {
             try {
                 mCounter = 0
-                while (true){
+                while (true) {
                     mHandler.post {
                         num = (mCounter + 1)//numに経過時間を代入
                         val text = "score:$num"

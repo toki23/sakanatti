@@ -24,15 +24,14 @@ class GameView @JvmOverloads constructor(
     private val dst = Rect()
     var paint: Paint = Paint()
     private var i = 0;
-    private var speed = 4;
+    private var speed = 7;
+    private var finishFlag = false;
     override fun onDraw(canvas: Canvas) {
         if (i == 0) {
-
             obstacle = Obstacle((0..800).random());
-
         }
-        obstacle.draw(canvas)
         obstacle.drop()
+        obstacle.draw(canvas)
         i++
         if (i >= canvas.height / speed) {
             i = 0;
@@ -50,8 +49,12 @@ class GameView @JvmOverloads constructor(
             super.onDraw(canvas);
             mpaint.setTextSize(400f);
             canvas.drawText("終了", 300f, 600f, mpaint);
+            finishFlag = true
         }
-        invalidate()
+        if (!finishFlag) {
+
+            invalidate()
+        }
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {    // (7)
@@ -71,7 +74,8 @@ class GameView @JvmOverloads constructor(
                 true // 何もしない
             )
         }
-        invalidate() // (13)
+//        invalidate() // (13)
+
         return true // (14)
     }
 

@@ -46,6 +46,11 @@ class GameView @JvmOverloads constructor(
         canvas.drawBitmap(bmp, null, dst, paint)
         if ((obstacle.left in fishL..fishR || obstacle.right in fishL..fishR) && (obstacle.top in fishT..fishB || obstacle.bottom in fishT..fishB)) {
             Log.i("aaa", "あたった")
+            val mpaint  =  Paint();
+            super.onDraw(canvas);
+            mpaint.setTextSize(20);
+            canvas.drawText("終了", 300f, 600f, mpaint);
+
             /****
              *
              *
@@ -114,13 +119,6 @@ class GameView @JvmOverloads constructor(
             bottom = y + 150
         }
     }
-<<<<<<< Updated upstream
-}
-=======
-
 
 }
 
-
-
->>>>>>> Stashed changes

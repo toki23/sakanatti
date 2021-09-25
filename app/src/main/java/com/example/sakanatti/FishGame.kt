@@ -22,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity
 class FishGame : AppCompatActivity() {
     internal var mHandler = Handler()
     internal var mCounter: Int = 0
+    private var finishFlag = false
+    private var best_score = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +37,8 @@ class FishGame : AppCompatActivity() {
 
         val score5: TextView = findViewById(R.id.score_game)
         val returnbt: Button = findViewById(R.id.returnbt)
-        var num: Int
-
+        var num = 0
+        val score = Score.get(applicationContext)
         returnbt.setOnClickListener {
             val intent = Intent(this, FishActivity::class.java)
             startActivity(intent)
@@ -45,7 +47,19 @@ class FishGame : AppCompatActivity() {
         val thread = Thread(Runnable {
             try {
                 mCounter = 0
-                while (true) {
+                while (true) { //あたったときにこのループを抜けだす。
+                    if(finishFlag){
+                        if (num > score){
+                            Score.set(applicationContext, num)
+                            best_score = num.toString()
+                            score5.text = best_score
+                        }else{
+                            best_score = score.toString()
+                            score5.text = best_score
+                        }
+
+                        break
+                    }
                     mHandler.post {
                         num = (mCounter + 1)//numに経過時間を代入
                         val text = "score:$num"
@@ -64,10 +78,11 @@ class FishGame : AppCompatActivity() {
 
 
 
-
-        Score.set(applicationContext, 10)
-        val score = Score.get(applicationContext)
-        Log.i("aaa", score.toString())
+        if (num > score){
+            Score.set(applicationContext, num)
+        }
+        //score5.text = score.toString()
+        //Log.i("aaa", score.toString())
     }
 
     internal inner class GameView @JvmOverloads constructor(
@@ -84,7 +99,6 @@ class FishGame : AppCompatActivity() {
         var paint: Paint = Paint()
         private var i = 0;
         private var speed = 7;
-        private var finishFlag = false;
         override fun onDraw(canvas: Canvas) {
 
 
@@ -110,11 +124,14 @@ class FishGame : AppCompatActivity() {
                 Log.i("aaa", "あたった")
                 val mpaint = Paint();
                 super.onDraw(canvas);
-                mpaint.setTextSize(400f);
+                mpaint.setTextSize(400f)
 
-                canvas.drawText("終了", 300f, 600f, mpaint);
+                canvas.drawText("終了", 200f, 600f, mpaint);
+                var text = best_score +"pt"
+                mpaint.setTextSize(100f)
+                canvas.drawText("ベストスコア",250f,800f,mpaint)
+                canvas.drawText(text,450F,1000F,mpaint)
                 finishFlag = true
-
             }
 
             if (!finishFlag) {

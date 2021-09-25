@@ -2,6 +2,7 @@ package com.example.sakanatti
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.SharedPreferences
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
@@ -96,6 +97,19 @@ class Database(
 
             database.close()
             dbHelper.close()
+        }
+    }
+}
+
+class Score {
+    companion object {
+        fun set(context: Context, score: Int) {
+            val sharedPref = context.getSharedPreferences("data", Context.MODE_PRIVATE)
+            sharedPref.edit().putInt("s", score).apply()
+        }
+        fun get(context: Context): Int {
+            val sharedPref = context.getSharedPreferences("data", Context.MODE_PRIVATE)
+            return sharedPref.getInt("s", -1)
         }
     }
 }

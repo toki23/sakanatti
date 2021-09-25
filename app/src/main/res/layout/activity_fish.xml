@@ -6,19 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".FishActivity">
 
-    <ImageView
-        android:id="@+id/img1"
-        android:layout_width="538dp"
-        android:layout_height="983dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715"
-        app:srcCompat="@drawable/sea1" />
-
-<!--    <view-->
+    <!--    <view-->
 <!--        android:id="@+id/view"-->
 <!--        class="com.example.sakanatti.FishView"-->
 <!--        android:layout_width="wrap_content"-->
@@ -29,6 +17,19 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:layout_constraintVertical_bias="1.0" />-->
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="538dp"
+        android:layout_height="983dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.678"
+        app:srcCompat="@drawable/sea1" />
+
     <LinearLayout
         android:id="@+id/fishLayout"
         android:layout_width="wrap_content"
@@ -38,6 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/textView"
@@ -68,12 +70,12 @@
         android:id="@+id/img4"
         android:layout_width="92dp"
         android:layout_height="101dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.903"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.925"
         app:srcCompat="@drawable/banana_1" />
 
     <ImageView
@@ -104,7 +106,7 @@
         android:id="@+id/img5"
         android:layout_width="113dp"
         android:layout_height="117dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.946"
         app:layout_constraintStart_toStartOf="parent"

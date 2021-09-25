@@ -9,8 +9,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-
-
+import com.example.sakanatti.Database
 class GameView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -27,6 +26,10 @@ class GameView @JvmOverloads constructor(
     private var speed = 7;
     private var finishFlag = false;
     override fun onDraw(canvas: Canvas) {
+
+
+
+
         if (i == 0) {
             obstacle = Obstacle((0..800).random());
         }
@@ -48,9 +51,12 @@ class GameView @JvmOverloads constructor(
             val mpaint = Paint();
             super.onDraw(canvas);
             mpaint.setTextSize(400f);
+
             canvas.drawText("終了", 300f, 600f, mpaint);
             finishFlag = true
+
         }
+
         if (!finishFlag) {
 
             invalidate()

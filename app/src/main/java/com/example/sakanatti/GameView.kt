@@ -48,19 +48,8 @@ class GameView @JvmOverloads constructor(
             Log.i("aaa", "あたった")
             val mpaint  =  Paint();
             super.onDraw(canvas);
-            mpaint.setTextSize(20);
+            mpaint.setTextSize(400f);
             canvas.drawText("終了", 300f, 600f, mpaint);
-
-            /****
-             *
-             *
-             *
-             *    ここに当たった時の処理を書く
-             *
-             *
-             *
-             *
-             */
         }
         invalidate()
     }

@@ -42,8 +42,6 @@ class FishActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-
-
             when (count) {
              1 -> when (score0) {
                1 -> {

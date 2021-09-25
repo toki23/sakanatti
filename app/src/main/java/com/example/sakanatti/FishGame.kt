@@ -3,6 +3,7 @@ package com.example.sakanatti
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -43,5 +44,13 @@ class FishGame : AppCompatActivity() {
         })
         thread.start()
 
+
+
+
+
+
+        Score.set(applicationContext, 10)
+        val score = Score.get(applicationContext)
+        Log.i("aaa", score.toString())
     }
 }

@@ -56,9 +56,7 @@ class FishGame : AppCompatActivity() {
                 if (mCounter > score) {
                     Log.i("sample", mCounter.toString())
                     Score.set(applicationContext, mCounter)
-                    score5.text = "$mCounter"
                 } else {
-                    score5.text = "$score"
                 }
             } catch (e: InterruptedException) {
                 e.printStackTrace()
@@ -108,7 +106,7 @@ class FishGame : AppCompatActivity() {
                 super.onDraw(canvas);
                 finishFlag = true
                 mpaint.setTextSize(400f)
-                canvas.drawText("終了", 200f, 600f, mpaint);
+                canvas.drawText("終了", 200f, 650f, mpaint);
                 mpaint.setTextSize(100f)
                 canvas.drawText("ベストスコア", 250f, 800f, mpaint)
                 if (mCounter > score) {

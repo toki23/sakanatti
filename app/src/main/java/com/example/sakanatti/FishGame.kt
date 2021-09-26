@@ -53,12 +53,15 @@ class FishGame : AppCompatActivity() {
                     Thread.sleep(1000)
                     mCounter++
                 }
-                if (mCounter > score) {
-                    Log.i("sample", mCounter.toString())
-                    Score.set(applicationContext, mCounter)
-                    score5.text = "$mCounter"
-                } else {
-                    score5.text = "$score"
+                mHandler.post {
+
+                    if (mCounter > score) {
+                        Log.i("sample", mCounter.toString())
+                        Score.set(applicationContext, mCounter)
+                        score5.text = "$mCounter"
+                    } else {
+                        score5.text = "$score"
+                    }
                 }
             } catch (e: InterruptedException) {
                 e.printStackTrace()
@@ -89,6 +92,7 @@ class FishGame : AppCompatActivity() {
 
             if (i == 0) {
                 obstacle = Obstacle((0..800).random());
+                speed++
             }
             obstacle.drop()
             obstacle.draw(canvas)
@@ -112,7 +116,7 @@ class FishGame : AppCompatActivity() {
                 mpaint.setTextSize(100f)
                 canvas.drawText("ベストスコア", 250f, 800f, mpaint)
                 if (mCounter > score) {
-                    canvas.drawText("${mCounter }pt", 450F, 1000F, mpaint)
+                    canvas.drawText("${mCounter}pt", 450F, 1000F, mpaint)
                 } else {
                     canvas.drawText("${score}pt", 450F, 1000F, mpaint)
                 }

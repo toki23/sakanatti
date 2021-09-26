@@ -120,7 +120,8 @@ class FishGame : AppCompatActivity() {
             val fishB = height / 2 + 600
             dst.set(fishL, fishT, fishR, fishB)
             canvas.drawBitmap(bmp, null, dst, paint)
-            if ((obstacle.left + 15 in fishL..fishR || obstacle.right - 15 in fishL..fishR) && (obstacle.top + 15 in fishT..fishB || obstacle.bottom - 15 in fishT..fishB)) {
+//            if ((obstacle.left + 15 in fishL..fishR || obstacle.right - 15 in fishL..fishR) && (obstacle.top + 15 in fishT..fishB || obstacle.bottom - 15 in fishT..fishB)) {
+            if (obstacle.dst2.intersect(dst)) {
                 val mpaint = Paint();
                 super.onDraw(canvas);
                 finishFlag = true
@@ -181,7 +182,7 @@ class FishGame : AppCompatActivity() {
             var bottom = 300
                 private set
             private val bmp2 = BitmapFactory.decodeResource(resources, R.drawable.beer_1)
-            private val dst2 = Rect(left, top, right, bottom)
+            public val dst2 = Rect(left, top, right, bottom)
 
             fun draw(canvas: Canvas) {
                 dst2.set(left, top, right, bottom)

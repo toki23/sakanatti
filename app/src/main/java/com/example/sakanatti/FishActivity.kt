@@ -8,7 +8,6 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -49,14 +48,17 @@ class FishActivity : AppCompatActivity() {
         val score1 = data[1]
         val score2 = data[2]
         val score3 = data[3]
-
+        val game_button: Button = findViewById(R.id.game_button)
         if (data.average() <= 2) {
             imageSrc = R.drawable.donyori_fish
+            game_button.isEnabled = false
         }
-        val game_button: Button = findViewById(R.id.game_button)
+
         game_button.setOnClickListener {
-            val intent = Intent(applicationContext, FishGame::class.java)
-            startActivity(intent)
+            if(imageSrc == R.drawable.donyori_fish) {
+                val intent = Intent(applicationContext, FishGame::class.java)
+                startActivity(intent)
+            }
         }
         btn1.setOnClickListener {
             count++
@@ -145,15 +147,9 @@ class FishActivity : AppCompatActivity() {
                         tx1.text = "ふくをきれいにできてえらいね。"
                     }
                 }
-                5, 6 -> {
-                    count = 0
-//                    if (count == 5) {
-//                        tx1.text = "たっちするとげーむがはじまるよ"
-//                    } else {
-//                        val intent = Intent(applicationContext, FishGame::class.java)
-//                        startActivity(intent)
-//                    }
+                5 -> {
 
+                    count = 0
                 }
             }
         }

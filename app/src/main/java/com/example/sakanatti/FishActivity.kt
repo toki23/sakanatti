@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -19,6 +20,7 @@ import java.lang.Math.sin
 
 
 class FishActivity : AppCompatActivity() {
+    private var imageSrc = R.drawable.fish2_blue
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,7 +28,7 @@ class FishActivity : AppCompatActivity() {
         val wrapContent = ViewGroup.LayoutParams.WRAP_CONTENT
         val linearLayout: LinearLayout = findViewById(R.id.fishLayout)
         val myView = FishView(this)
-        linearLayout.addView(myView, LinearLayout.LayoutParams(wrapContent,wrapContent))
+        linearLayout.addView(myView, LinearLayout.LayoutParams(wrapContent, wrapContent))
         var count = 0
         val btn1: Button = findViewById(R.id.id)
         val tx1: TextView = findViewById(R.id.textView)
@@ -48,6 +50,9 @@ class FishActivity : AppCompatActivity() {
         val score2 = data[2]
         val score3 = data[3]
 
+        if (data.average() <= 2) {
+            imageSrc = R.drawable.donyori_fish
+        }
         btn1.setOnClickListener {
             count++
             if (score0 == 6 && score1 == 6 && score2 == 6 && score3 == 6 && count == 1) {
@@ -81,7 +86,7 @@ class FishActivity : AppCompatActivity() {
                 2 -> when (score1) {//1
                     1 -> {
                         tx1.text = "つくえがとてもきたないので、もとにもどそう。"
-                   img3.visibility = View.VISIBLE
+                        img3.visibility = View.VISIBLE
                     }
                     2 -> {
                         tx1.text = "つくえがきたないので、もとのいちにもどそう。"
@@ -147,6 +152,7 @@ class FishActivity : AppCompatActivity() {
             }
         }
     }
+
     internal inner class FishView @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
@@ -154,15 +160,18 @@ class FishActivity : AppCompatActivity() {
     ) : View(context, attrs, defStyleAttr) {
         private var i = 0
         private val paint: Paint = Paint()
-        private val bmp = BitmapFactory.decodeResource(resources, R.drawable.fish2_blue)
+        private var bmp = BitmapFactory.decodeResource(resources, imageSrc)
         private val bmp0 = BitmapFactory.decodeResource(resources, R.drawable.e0760)
         private val dst = Rect()
         private val dst0 = Rect()
         override fun onDraw(canvas: Canvas) {
-            val fishL = width / 3 + (150 * sin(0.1 * i.toDouble())).toInt()
-            val fishT = height / 2 + (50 * sin(0.05 * i.toDouble())).toInt()
-            val fishR = width / 3 + 500 + (150 * sin(0.1 * i.toDouble())).toInt()
-            val fishB = height / 2 + 400 + (50 * sin(0.05 * i.toDouble())).toInt()
+            if (i == 0) {
+                bmp = BitmapFactory.decodeResource(resources, imageSrc)
+            }
+            val fishL = width / 3 + (150 * sin(0.05 * i.toDouble())).toInt()
+            val fishT = height / 2 + (50 * sin(0.025 * i.toDouble())).toInt()
+            val fishR = width / 3 + 500 + (150 * sin(0.05 * i.toDouble())).toInt()
+            val fishB = height / 2 + 400 + (50 * sin(0.025 * i.toDouble())).toInt()
             dst.set(fishL, fishT, fishR, fishB)
             dst0.set(
                 width / 3 - 200, height / 2 - 500,

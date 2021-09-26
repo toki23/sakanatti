@@ -51,14 +51,14 @@ class FishActivity : AppCompatActivity() {
         val game_button: Button = findViewById(R.id.game_button)
         if (data.average() <= 2) {
             imageSrc = R.drawable.donyori_fish
-            game_button.isEnabled = false
+            //game_button.isEnabled = false
         }
 
         game_button.setOnClickListener {
-            if(imageSrc == R.drawable.donyori_fish) {
+            //if(imageSrc == R.drawable.donyori_fish) {
                 val intent = Intent(applicationContext, FishGame::class.java)
                 startActivity(intent)
-            }
+            //}
         }
         btn1.setOnClickListener {
             count++

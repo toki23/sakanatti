@@ -66,8 +66,8 @@
 
     <Button
         android:id="@+id/id"
-        android:layout_width="349dp"
-        android:layout_height="237dp"
+        android:layout_width="413dp"
+        android:layout_height="679dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

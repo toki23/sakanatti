@@ -48,7 +48,7 @@ class FishGame : AppCompatActivity() {
             try {
                 mCounter = 0
                 while (true) { //あたったときにこのループを抜けだす。
-                    best_score = num.toString()
+                    best_score = score.toString()
                     if(finishFlag){
                         if (num > score){
                             Score.set(applicationContext, num)
@@ -58,7 +58,6 @@ class FishGame : AppCompatActivity() {
                             best_score = score.toString()
                             score5.text = best_score
                         }
-                        break
                     }
                     mHandler.post {
                         num = (mCounter + 1)//numに経過時間を代入
@@ -122,13 +121,12 @@ class FishGame : AppCompatActivity() {
             if ((obstacle.left + 15 in fishL..fishR || obstacle.right - 15 in fishL..fishR) && (obstacle.top + 15 in fishT..fishB || obstacle.bottom - 15 in fishT..fishB)) {
                 val mpaint = Paint();
                 super.onDraw(canvas);
+                finishFlag = true
                 mpaint.setTextSize(400f)
-
                 canvas.drawText("終了", 200f, 600f, mpaint);
                 mpaint.setTextSize(100f)
                 canvas.drawText("ベストスコア",250f,800f,mpaint)
                 canvas.drawText("${best_score}pt",450F,1000F,mpaint)
-                finishFlag = true
             }
 
             if (!finishFlag) {

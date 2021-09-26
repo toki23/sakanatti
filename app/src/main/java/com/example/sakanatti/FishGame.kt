@@ -106,6 +106,8 @@ class FishGame : AppCompatActivity() {
             val fishB = height / 2 + 600
             dst.set(fishL, fishT, fishR, fishB)
             canvas.drawBitmap(bmp, null, dst, paint)
+            dst.set(fishL + 60 , fishT + 30, fishR -60, fishB - 60) //当たり判定の調整
+
 //            if ((obstacle.left + 15 in fishL..fishR || obstacle.right - 15 in fishL..fishR) && (obstacle.top + 15 in fishT..fishB || obstacle.bottom - 15 in fishT..fishB)) {
             if (obstacle.dst2.intersect(dst)) {
                 val mpaint = Paint();

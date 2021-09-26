@@ -53,14 +53,19 @@ class FishActivity : AppCompatActivity() {
         if (data.average() <= 2) {
             imageSrc = R.drawable.donyori_fish
         }
+        val game_button: Button = findViewById(R.id.game_button)
+        game_button.setOnClickListener {
+            val intent = Intent(applicationContext, FishGame::class.java)
+            startActivity(intent)
+        }
         btn1.setOnClickListener {
             count++
-            if (score0 == 6 && score1 == 6 && score2 == 6 && score3 == 6 && count == 1) {
-                tx1.text = "タップしてゲームを開始"
-            } else if (score0 == 6 && score1 == 6 && score2 == 6 && score3 == 6 && count == 2) {
-                val intent = Intent(applicationContext, FishGame::class.java)
-                startActivity(intent)
-            }
+//            if (score0 == 6 && score1 == 6 && score2 == 6 && score3 == 6 && count == 1) {
+//                tx1.text = "タップしてゲームを開始"
+//            } else if (score0 == 6 && score1 == 6 && score2 == 6 && score3 == 6 && count == 2) {
+//                val intent = Intent(applicationContext, FishGame::class.java)
+//                startActivity(intent)
+//            }
 
             when (count) {
                 1 -> when (score0) {
@@ -141,12 +146,13 @@ class FishActivity : AppCompatActivity() {
                     }
                 }
                 5, 6 -> {
-                    if (count == 5) {
-                        tx1.text = "たっちするとげーむがはじまるよ"
-                    } else {
-                        val intent = Intent(applicationContext, FishGame::class.java)
-                        startActivity(intent)
-                    }
+                    count = 0
+//                    if (count == 5) {
+//                        tx1.text = "たっちするとげーむがはじまるよ"
+//                    } else {
+//                        val intent = Intent(applicationContext, FishGame::class.java)
+//                        startActivity(intent)
+//                    }
 
                 }
             }

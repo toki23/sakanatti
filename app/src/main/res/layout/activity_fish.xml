@@ -18,6 +18,13 @@
     <!--        app:layout_constraintTop_toTopOf="parent"-->
     <!--        app:layout_constraintVertical_bias="1.0" />-->
 
+    <Button
+        android:id="@+id/game_button"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="ゲームをする" />
+
     <ImageView
         android:id="@+id/img1"
         android:layout_width="538dp"
@@ -40,7 +47,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0" >
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"

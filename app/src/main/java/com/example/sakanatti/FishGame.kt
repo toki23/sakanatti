@@ -17,6 +17,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Looper
 
 
 class FishGame : AppCompatActivity() {
@@ -30,9 +31,9 @@ class FishGame : AppCompatActivity() {
         setContentView(R.layout.activity_fish_game)
 
         val wrapContent = ViewGroup.LayoutParams.WRAP_CONTENT
-        val linearLayout:LinearLayout = findViewById(R.id.canvasLayout)
+        val linearLayout: LinearLayout = findViewById(R.id.canvasLayout)
         val myView = GameView(this)
-        linearLayout.addView(myView, LinearLayout.LayoutParams(wrapContent,wrapContent))
+        linearLayout.addView(myView, LinearLayout.LayoutParams(wrapContent, wrapContent))
 
 
         val score5: TextView = findViewById(R.id.score_game)
@@ -49,14 +50,17 @@ class FishGame : AppCompatActivity() {
                 mCounter = 0
                 while (true) { //あたったときにこのループを抜けだす。
                     best_score = score.toString()
-                    if(finishFlag){
-                        if (num > score){
-                            Score.set(applicationContext, num)
-                            best_score = num.toString()
-                            score5.text = best_score
-                        }else{
-                            best_score = score.toString()
-                            score5.text = best_score
+                    mHandler.post {
+
+                        if (finishFlag) {
+                            if (num > score) {
+                                Score.set(applicationContext, num)
+                                best_score = num.toString()
+                                score5.text = best_score
+                            } else {
+                                best_score = score.toString()
+                                score5.text = best_score
+                            }
                         }
                     }
                     mHandler.post {
@@ -77,7 +81,7 @@ class FishGame : AppCompatActivity() {
 
 
 
-        if (num > score){
+        if (num > score) {
             Score.set(applicationContext, num)
         }
         //score5.text = score.toString()
@@ -99,8 +103,6 @@ class FishGame : AppCompatActivity() {
         private var i = 0;
         private var speed = 7;
         override fun onDraw(canvas: Canvas) {
-
-
 
 
             if (i == 0) {
@@ -125,8 +127,8 @@ class FishGame : AppCompatActivity() {
                 mpaint.setTextSize(400f)
                 canvas.drawText("終了", 200f, 600f, mpaint);
                 mpaint.setTextSize(100f)
-                canvas.drawText("ベストスコア",250f,800f,mpaint)
-                canvas.drawText("${best_score}pt",450F,1000F,mpaint)
+                canvas.drawText("ベストスコア", 250f, 800f, mpaint)
+                canvas.drawText("${best_score}pt", 450F, 1000F, mpaint)
             }
 
             if (!finishFlag) {
@@ -136,6 +138,9 @@ class FishGame : AppCompatActivity() {
         }
 
         override fun onTouchEvent(event: MotionEvent): Boolean {    // (7)
+            if (finishFlag) {
+                return true
+            }
             Log.i("sampp", "aaabbb" + best_score)
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> assert(

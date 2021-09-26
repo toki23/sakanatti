@@ -51,7 +51,7 @@ class FishActivity : AppCompatActivity() {
         val game_button: Button = findViewById(R.id.game_button)
         if (data.average() <= 2) {
             imageSrc = R.drawable.donyori_fish
-            //game_button.isEnabled = false
+            game_button.isEnabled = false
         }
 
         game_button.setOnClickListener {

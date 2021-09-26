@@ -8,7 +8,6 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -61,84 +60,84 @@ class FishActivity : AppCompatActivity() {
             when (count) {
                 1 -> when (score0) {
                     1 -> {
-                        tx1.text = "床がかなり散らかっています。"
+                        tx1.text = "ゆかがとてもきたないので、もとのいちにもどそう。"
                         img2.visibility = View.VISIBLE
                     }
                     2 -> {
-                        tx1.text = "床が散らかっています。"
+                        tx1.text = "ゆかがきたいので、もとのいちにもどそう。"
                         img2.visibility = View.VISIBLE
                     }
                     3 -> {
-                        tx1.text = "床を掃除しよう。"
+                        tx1.text = "ゆかがちらかっているので、もとのいちにもどそう。"
                     }
                     4 -> {
-                        tx1.text = "床を確認しよう。"
+                        tx1.text = "ゆかがちらかっているので、もとのいちにもどそう。"
                     }
                     5 -> {
-                        tx1.text = "床はきれいですね。"
+                        tx1.text = "ゆかをきれにできてえらいね。"
                     }
 
                 }
                 2 -> when (score1) {//1
                     1 -> {
-                        tx1.text = "机の上がかなり散らかっています。"
-                        img3.visibility = View.VISIBLE
+                        tx1.text = "つくえがとてもきたないので、もとにもどそう。"
+                   img3.visibility = View.VISIBLE
                     }
                     2 -> {
-                        tx1.text = "机が散らかっています。"
+                        tx1.text = "つくえがきたないので、もとのいちにもどそう。"
                         img3.visibility = View.VISIBLE
                     }
                     3 -> {
-                        tx1.text = "机を掃除しよう。"
+                        tx1.text = "つくえがちらかっているので、もとのいちにもどそう。"
                     }
                     4 -> {
-                        tx1.text = "机を確認しよう。"
+                        tx1.text = "つくえがちらかっているので、もとのいちにもどそう。"
                     }
                     5 -> {
-                        tx1.text = "机はきれいですね。"
+                        tx1.text = "つくえをきれいにできてえらいね。"
                     }
                 }
                 3 -> when (score2) {//2
                     1 -> {
-                        tx1.text = "本がかなり散らかっています。"
+                        tx1.text = "ほんがとてもきたないので、ほんだなにもどそう。"
                         img4.visibility = View.VISIBLE
                     }
                     2 -> {
-                        tx1.text = "本が散らかっています。"
+                        tx1.text = "ほんがきたないので、ほんだなにもどそう。"
                         img4.visibility = View.VISIBLE
                     }
                     3 -> {
-                        tx1.text = "本を掃除しよう。"
+                        tx1.text = "ほんがちらかっているので、ほんだなにもどそう。"
                     }
                     4 -> {
-                        tx1.text = "本を確認しよう。"
+                        tx1.text = "ほんがちらかっているので、ほんだなにもどそう。"
                     }
                     5 -> {
-                        tx1.text = "本はきれいですね。"
+                        tx1.text = "ほんをきれいにできてえらいね。"
                     }
                 }
                 4 -> when (score3) {//3
                     1 -> {
-                        tx1.text = "服がかなり散らかっています。"
+                        tx1.text = "ふくがかなりきたいので、せんたくかごにいれよう。"
                         img5.visibility = View.VISIBLE
                     }
                     2 -> {
-                        tx1.text = "服が散らかっています。"
+                        tx1.text = "ふくがきたないので、せんたくかごにいれよう。"
                         img5.visibility = View.VISIBLE
                     }
                     3 -> {
-                        tx1.text = "服を掃除しよう。"
+                        tx1.text = "ふくがちらかっているので、せんたくかごにいれよう。"
                     }
                     4 -> {
-                        tx1.text = "服を確認しよう。"
+                        tx1.text = "ふくがちらかっているので、せんたくかごにいれよう。"
                     }
                     5 -> {
-                        tx1.text = "服はきれいですね。"
+                        tx1.text = "ふくをきれいにできてえらいね。"
                     }
                 }
                 5, 6 -> {
                     if (count == 5) {
-                        tx1.text = "タップしてゲームを開始"
+                        tx1.text = "たっちするとげーむがはじまるよ"
                     } else {
                         val intent = Intent(applicationContext, FishGame::class.java)
                         startActivity(intent)

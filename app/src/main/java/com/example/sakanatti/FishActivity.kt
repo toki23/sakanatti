@@ -181,7 +181,7 @@ class FishActivity : AppCompatActivity() {
             )
             i++
             canvas.drawBitmap(bmp, null, dst, paint)
-            canvas.drawBitmap(bmp0, null, dst0, paint)
+//            canvas.drawBitmap(bmp0, null, dst0, paint)
             invalidate()
         }
     }

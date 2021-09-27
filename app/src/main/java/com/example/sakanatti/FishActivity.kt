@@ -52,6 +52,8 @@ class FishActivity : AppCompatActivity() {
         if (data.average() <= 2) {
             imageSrc = R.drawable.donyori_fish
             game_button.isEnabled = false
+            tx1.text = "へやがとてもきたないので、げーむをあそぶことができないよ。"
+
         }
 
         game_button.setOnClickListener {
@@ -86,7 +88,7 @@ class FishActivity : AppCompatActivity() {
                         tx1.text = "ゆかがちらかっているので、もとのいちにもどそう。"
                     }
                     5 -> {
-                        tx1.text = "ゆかをきれにできてえらいね。"
+                        tx1.text = "ゆかをきれいにできてえらいね。"
                     }
 
                 }

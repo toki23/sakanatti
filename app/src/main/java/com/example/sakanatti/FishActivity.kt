@@ -52,7 +52,7 @@ class FishActivity : AppCompatActivity() {
         if (data.average() <= 2) {
             imageSrc = R.drawable.donyori_fish
             game_button.isEnabled = false
-            tx1.text = "へやがとてもきたないので、げーむをあそぶことができないよ。"
+            tx1.text = "へやがきたないので、げーむをあそぶことができないよ。"
 
         }
 
@@ -78,7 +78,7 @@ class FishActivity : AppCompatActivity() {
                         img2.visibility = View.VISIBLE
                     }
                     2 -> {
-                        tx1.text = "ゆかがきたいので、もとのいちにもどそう。"
+                        tx1.text = "ゆかがきたないので、もとのいちにもどそう。"
                         img2.visibility = View.VISIBLE
                     }
                     3 -> {
@@ -132,7 +132,7 @@ class FishActivity : AppCompatActivity() {
                 }
                 4 -> when (score3) {//3
                     1 -> {
-                        tx1.text = "ふくがかなりきたいので、せんたくかごにいれよう。"
+                        tx1.text = "ふくがかなりきたないので、せんたくかごにいれよう。"
                         img5.visibility = View.VISIBLE
                     }
                     2 -> {

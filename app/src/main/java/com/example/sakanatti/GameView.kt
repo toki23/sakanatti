@@ -26,12 +26,8 @@ class GameView @JvmOverloads constructor(
     private var speed = 7;
     private var finishFlag = false;
     override fun onDraw(canvas: Canvas) {
-
-
-
-
         if (i == 0) {
-            obstacle = Obstacle((0..800).random());
+            obstacle = Obstacle((0..width).random());
         }
         obstacle.drop()
         obstacle.draw(canvas)

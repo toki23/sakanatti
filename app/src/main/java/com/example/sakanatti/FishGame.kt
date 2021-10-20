@@ -8,7 +8,6 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
 import android.os.Handler
-import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -17,24 +16,22 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Looper
 
 
 class FishGame : AppCompatActivity() {
     internal var mHandler = Handler()
     internal var mCounter: Int = 0
     private var finishFlag = false
+    val mpaint = Paint()
     var score = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fish_game)
-
         val wrapContent = ViewGroup.LayoutParams.WRAP_CONTENT
         val linearLayout: LinearLayout = findViewById(R.id.canvasLayout)
         val myView = GameView(this)
         linearLayout.addView(myView, LinearLayout.LayoutParams(wrapContent, wrapContent))
         score = Score.get(applicationContext)
-
         val score5: TextView = findViewById(R.id.score_game)
         val returnbt: Button = findViewById(R.id.returnbt)
         returnbt.setOnClickListener {
@@ -42,7 +39,7 @@ class FishGame : AppCompatActivity() {
             startActivity(intent)
         }
         //時間計測↓
-        val thread = Thread(Runnable {
+        val thread = Thread {
             try {
                 while (!finishFlag) { //あたったときにこのループを抜けだす。
                     mHandler.post {
@@ -66,39 +63,36 @@ class FishGame : AppCompatActivity() {
             } catch (e: InterruptedException) {
                 e.printStackTrace()
             }
-        })
+        }
         thread.start()
-
         //score5.text = score.toString()
         //Log.i("aaa", score.toString())
     }
 
-    internal inner class GameView @JvmOverloads constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
-    ) : View(context, attrs, defStyleAttr) {
+    internal inner class GameView constructor(
+        context: Context
+    ) : View(context) {
         private var cx = 100
 
         //private var cy = 0
-        private var obstacle = Obstacle(200)
+        private var obstacle = Obstacle()
         private val bmp = BitmapFactory.decodeResource(resources, R.drawable.silhouette_fish_top)
         private val dst = Rect()
         var paint: Paint = Paint()
-        private var i = 0;
-        private var speed = 7;
+        private var i = 0
+        private var speed = 7
         override fun onDraw(canvas: Canvas) {
-
-
             if (i == 0) {
-                obstacle = Obstacle((0..800).random());
-                speed++
+                obstacle.init()
+                if(speed < 57) {
+                    speed++
+                }
             }
             obstacle.drop()
             obstacle.draw(canvas)
             i++
-            if (i >= canvas.height / speed) {
-                i = 0;
+            if (i >= height / speed) {
+                i = 0
             }
             val fishL = cx - 120
             val fishT = height / 2 + 200
@@ -106,26 +100,21 @@ class FishGame : AppCompatActivity() {
             val fishB = height / 2 + 600
             dst.set(fishL, fishT, fishR, fishB)
             canvas.drawBitmap(bmp, null, dst, paint)
-            dst.set(fishL + 60 , fishT + 30, fishR -60, fishB - 60) //当たり判定の調整
-
+            dst.set(fishL + 60, fishT + 30, fishR - 60, fishB - 60) //当たり判定の調整
 //            if ((obstacle.left + 15 in fishL..fishR || obstacle.right - 15 in fishL..fishR) && (obstacle.top + 15 in fishT..fishB || obstacle.bottom - 15 in fishT..fishB)) {
             if (obstacle.dst2.intersect(dst)) {
-                val mpaint = Paint();
-                super.onDraw(canvas);
+                super.onDraw(canvas)
                 finishFlag = true
-                mpaint.setTextSize(400f)
-                canvas.drawText("終了", 200f, 650f, mpaint);
-                mpaint.setTextSize(100f)
-                canvas.drawText("ベストスコア", 250f, 800f, mpaint)
+                mpaint.textSize = 400f
+                canvas.drawText("終了", width / 2 - 300f, height / 2f, mpaint)
+                mpaint.textSize = 100f
                 if (mCounter > score) {
-                    canvas.drawText("${mCounter}pt", 450F, 1000F, mpaint)
+                    canvas.drawText("ベストスコア${mCounter}pt", width / 2 - 300f, height / 2f + 300, mpaint)
                 } else {
-                    canvas.drawText("${score}pt", 450F, 1000F, mpaint)
+                    canvas.drawText("ベストスコア${score}pt", width / 2 - 300f, height / 2f + 300, mpaint)
                 }
             }
-
             if (!finishFlag) {
-
                 invalidate()
             }
         }
@@ -160,20 +149,20 @@ class FishGame : AppCompatActivity() {
             return true
         }
 
-        inner class Obstacle constructor(
-            private var x: Int,
-            private var y: Int = 0,
-        ) {
-            var left = 0
-                private set
-            var top = 0
-                private set
-            var right = 300
-                private set
-            var bottom = 300
-                private set
+        inner class Obstacle {
+            private var x: Int = (0..width).random()
+            private var y: Int = 0
+            private var left = 0
+            private var top = 0
+            private var right = 300
+            private var bottom = 300
             private val bmp2 = BitmapFactory.decodeResource(resources, R.drawable.beer_1)
-            public val dst2 = Rect(left, top, right, bottom)
+            val dst2 = Rect(left, top, right, bottom)
+
+            fun init() {
+                x = (0..width).random()
+                y = 0
+            }
 
             fun draw(canvas: Canvas) {
                 dst2.set(left, top, right, bottom)
@@ -188,10 +177,7 @@ class FishGame : AppCompatActivity() {
                 bottom = y + 450
             }
         }
-
     }
-
-
 }
 //
 //package com.example.sakanatti

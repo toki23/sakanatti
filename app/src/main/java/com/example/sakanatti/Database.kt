@@ -2,41 +2,11 @@ package com.example.sakanatti
 
 import android.content.ContentValues
 import android.content.Context
-import android.content.SharedPreferences
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import java.text.SimpleDateFormat
 import java.util.*
-
-//import androidx.room.*
-//import java.util.*
-
-//@Entity
-//data class Score(
-//    @PrimaryKey val date: Date,
-//    val score1: Int,
-//    val score2: Int,
-//    val score3: Int,
-//    val score4: Int
-//)
-//
-//@Dao
-//interface ScoreDao {
-//    @Insert
-//    fun insert(score: Score)
-//
-//    @Update
-//    fun update(score: Score)
-//
-//    @Delete
-//    fun delete(score: Score)
-//}
-//
-//@Database(entities = [Score::class], version = 1)
-//abstract class ScoreDatabase : RoomDatabase() {
-//    abstract fun scoreDao(): ScoreDao
-//}
 
 class Database(
     context: Context,

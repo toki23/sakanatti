@@ -7,7 +7,6 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -19,8 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class FishGame : AppCompatActivity() {
-    internal var mHandler = Handler()
-    internal var mCounter: Int = 0
+    private var mCounter: Int = 0
     private var finishFlag = false
     val mpaint = Paint()
     var score = 0
@@ -40,36 +38,26 @@ class FishGame : AppCompatActivity() {
         }
         //時間計測↓
         val thread = Thread {
-            try {
-                while (!finishFlag) { //あたったときにこのループを抜けだす。
-                    mHandler.post {
-                        //numに経過時間を代入
-                        val text = "score:$mCounter"
-                        score5.text = text
-                    }
-                    Thread.sleep(1000)
-                    mCounter++
-                }
-                mHandler.post {
-
-                    if (mCounter > score) {
-                        Log.i("sample", mCounter.toString())
-                        Score.set(applicationContext, mCounter)
-                        score5.text = "$mCounter"
-                    } else {
-                        score5.text = "$score"
-                    }
-                }
-            } catch (e: InterruptedException) {
-                e.printStackTrace()
+            while (!finishFlag) { //あたったときにこのループを抜けだす。
+                val text = "score:$mCounter"
+                runOnUiThread { score5.text = text }
+                Thread.sleep(1000)
+                mCounter++
+            }
+            if (mCounter > score) {
+                Score.set(applicationContext, mCounter)
+                runOnUiThread { score5.text = "$mCounter" }
+            } else {
+                runOnUiThread { score5.text = "$score" }
             }
         }
         thread.start()
+
         //score5.text = score.toString()
         //Log.i("aaa", score.toString())
     }
 
-    internal inner class GameView constructor(
+    inner class GameView constructor(
         context: Context
     ) : View(context) {
         private var cx = 100
@@ -84,7 +72,7 @@ class FishGame : AppCompatActivity() {
         override fun onDraw(canvas: Canvas) {
             if (i == 0) {
                 obstacle.init()
-                if(speed < 57) {
+                if (speed < 47) {
                     speed++
                 }
             }
@@ -109,7 +97,12 @@ class FishGame : AppCompatActivity() {
                 canvas.drawText("終了", width / 2 - 300f, height / 2f, mpaint)
                 mpaint.textSize = 100f
                 if (mCounter > score) {
-                    canvas.drawText("ベストスコア${mCounter}pt", width / 2 - 300f, height / 2f + 300, mpaint)
+                    canvas.drawText(
+                        "ベストスコア${mCounter}pt",
+                        width / 2 - 300f,
+                        height / 2f + 300,
+                        mpaint
+                    )
                 } else {
                     canvas.drawText("ベストスコア${score}pt", width / 2 - 300f, height / 2f + 300, mpaint)
                 }

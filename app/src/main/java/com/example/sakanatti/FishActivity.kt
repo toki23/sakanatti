@@ -7,7 +7,6 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -15,7 +14,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import java.lang.Math.sin
+import kotlin.math.sin
 
 
 class FishActivity : AppCompatActivity() {
@@ -157,11 +156,9 @@ class FishActivity : AppCompatActivity() {
         }
     }
 
-    internal inner class FishView @JvmOverloads constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
-    ) : View(context, attrs, defStyleAttr) {
+    inner class FishView constructor(
+        context: Context
+    ) : View(context) {
         private var i = 0
         private val paint: Paint = Paint()
         private var bmp = BitmapFactory.decodeResource(resources, imageSrc)

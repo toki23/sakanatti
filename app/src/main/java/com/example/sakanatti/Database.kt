@@ -55,31 +55,23 @@ class Database(
                     cursor.moveToNext()
                 }
             }
+            cursor.close()
             database.close()
             dbHelper.close()
             Log.i("sample", data.toString())
             return data
         }
-
-        fun evaluation(context: Context) {
-            val dbHelper = Database(context, "score", null, 1)
-            val database = dbHelper.readableDatabase
-
-            database.close()
-            dbHelper.close()
-        }
     }
 }
 
-class Score {
-    companion object {
-        fun set(context: Context, score: Int) {
-            val sharedPref = context.getSharedPreferences("data", Context.MODE_PRIVATE)
-            sharedPref.edit().putInt("s", score).apply()
-        }
-        fun get(context: Context): Int {
-            val sharedPref = context.getSharedPreferences("data", Context.MODE_PRIVATE)
-            return sharedPref.getInt("s", -1)
-        }
+object Score {
+    fun set(context: Context, score: Int) {
+        val sharedPref = context.getSharedPreferences("data", Context.MODE_PRIVATE)
+        sharedPref.edit().putInt("s", score).apply()
+    }
+
+    fun get(context: Context): Int {
+        val sharedPref = context.getSharedPreferences("data", Context.MODE_PRIVATE)
+        return sharedPref.getInt("s", -1)
     }
 }

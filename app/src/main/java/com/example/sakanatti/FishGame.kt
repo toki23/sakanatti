@@ -7,7 +7,6 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -33,8 +32,9 @@ class FishGame : AppCompatActivity() {
         val score5: TextView = findViewById(R.id.score_game)
         val returnbt: Button = findViewById(R.id.returnbt)
         returnbt.setOnClickListener {
-            val intent = Intent(this, FishActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, FishActivity::class.java)
+//            startActivity(intent)
+            finish()
         }
         //時間計測↓
         val thread = Thread {

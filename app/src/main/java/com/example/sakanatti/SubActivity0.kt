@@ -18,7 +18,7 @@ class SubActivity0 : AppCompatActivity() {
             val intent = Intent(this, Evaluation::class.java)
             startActivity(intent)
 
-            bt0.setEnabled(false)
+            bt0.isEnabled = false
         }
     }
 }

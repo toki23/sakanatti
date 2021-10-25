@@ -1,11 +1,7 @@
 package com.example.sakanatti
 
 import android.content.Context
-import android.content.Intent
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Rect
+import android.graphics.*
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -14,6 +10,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.util.*
 
 
 class FishGame : AppCompatActivity() {
@@ -46,9 +43,9 @@ class FishGame : AppCompatActivity() {
             }
             if (mCounter > score) {
                 Score.set(applicationContext, mCounter)
-                runOnUiThread { score5.text = "$mCounter" }
+                //runOnUiThread { score5.text = "$mCounter" }
             } else {
-                runOnUiThread { score5.text = "$score" }
+                ///runOnUiThread { score5.text = "$score" }
             }
         }
         thread.start()
@@ -149,9 +146,27 @@ class FishGame : AppCompatActivity() {
             private var top = 0
             private var right = 300
             private var bottom = 300
-            private val bmp2 = BitmapFactory.decodeResource(resources, R.drawable.beer_1)
-            val dst2 = Rect(left, top, right, bottom)
+            private var bmp2 = BitmapFactory.decodeResource(resources, R.drawable.beer_1)
+            fun randamImage(): Bitmap {
+                when (Random().nextInt(3)){
+                    0 -> {
+                        bmp2 = BitmapFactory.decodeResource(resources, R.drawable.beer_1)
+                    }
+                    1 -> {
+                        bmp2 = BitmapFactory.decodeResource(resources, R.drawable.banana_1)
+                    }
+                    2 -> {
+                        bmp2 = BitmapFactory.decodeResource(resources, R.drawable.gomi_3)
+                    }
+                    3 -> {
+                        bmp2 = BitmapFactory.decodeResource(resources, R.drawable.sinnbunn_1)
+                    }
 
+                }
+                return bmp2
+            }
+            private var bmp3 = randamImage()
+            val dst2 = Rect(left, top, right, bottom)
             fun init() {
                 x = (0..width).random()
                 y = 0
@@ -159,7 +174,7 @@ class FishGame : AppCompatActivity() {
 
             fun draw(canvas: Canvas) {
                 dst2.set(left, top, right, bottom)
-                canvas.drawBitmap(bmp2, null, dst2, paint)
+                canvas.drawBitmap(bmp3, null, dst2, paint)
             }
 
             fun drop() {

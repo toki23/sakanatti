@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
+import kotlin.random.Random
 
 
 class FishGame : AppCompatActivity() {
@@ -148,7 +149,7 @@ class FishGame : AppCompatActivity() {
             private var bottom = 300
             private var bmp2 = BitmapFactory.decodeResource(resources, R.drawable.beer_1)
             fun randamImage(): Bitmap {
-                when (Random().nextInt(3)){
+                when (Random.nextInt(4)){
                     0 -> {
                         bmp2 = BitmapFactory.decodeResource(resources, R.drawable.beer_1)
                     }
@@ -165,11 +166,12 @@ class FishGame : AppCompatActivity() {
                 }
                 return bmp2
             }
-            private var bmp3 = randamImage()
+            private var bmp3 = BitmapFactory.decodeResource(resources, R.drawable.sinnbunn_1)
             val dst2 = Rect(left, top, right, bottom)
             fun init() {
                 x = (0..width).random()
                 y = 0
+                bmp3 = randamImage()
             }
 
             fun draw(canvas: Canvas) {

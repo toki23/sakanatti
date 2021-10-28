@@ -52,7 +52,8 @@ class FishActivity : AppCompatActivity() {
             imageSrc = R.drawable.donyori_fish
             game_button.isEnabled = false
             tx1.text = "へやがきたないので、げーむをあそぶことができないよ。"
-
+            val img1: ImageView = findViewById(R.id.img1)
+            img1.setImageResource(R.drawable.sea2)
         }
 
         game_button.setOnClickListener {

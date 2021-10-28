@@ -6,21 +6,10 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/a/sakanatti/app/src/main/res/layout/activity_evaluation.xml" value="0.1" />
         <entry key="..\:/Project/sakanatti/app/src/main/res/layout/activity_evaluation.xml" value="0.3333333333333333" />
-        <entry key="..\:/Project/sakanatti/app/src/main/res/layout/activity_fish.xml" value="0.1796875" />
-        <entry key="..\:/Project/sakanatti/app/src/main/res/layout/activity_fish_game.xml" value="0.10552536231884058" />
-        <entry key="..\:/Project/sakanatti/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
-        <entry key="..\:/Project/sakanatti/app/src/main/res/layout/activity_second.xml" value="0.1" />
-        <entry key="..\:/Project/sakanatti/app/src/main/res/layout/activity_sub0.xml" value="0.25" />
-        <entry key="..\:/Project/sakanatti/app/src/main/res/layout/activity_third.xml" value="0.1" />
-        <entry key="..\:/Project/sakanatti/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.19583333333333333" />
-        <entry key="..\:/Users/blanc/AndroidStudioProjects/sakanatti/app/src/main/res/drawable/ic_launcher_background.xml" value="0.37447916666666664" />
-        <entry key="..\:/Users/blanc/AndroidStudioProjects/sakanatti/app/src/main/res/layout/activity_evaluation.xml" value="0.35833333333333334" />
-        <entry key="..\:/Users/blanc/AndroidStudioProjects/sakanatti/app/src/main/res/layout/activity_fish.xml" value="0.33" />
+        <entry key="..\:/Users/blanc/AndroidStudioProjects/sakanatti/app/src/main/res/layout/activity_fish.xml" value="0.3625" />
         <entry key="..\:/Users/blanc/AndroidStudioProjects/sakanatti/app/src/main/res/layout/activity_fish_game.xml" value="0.25" />
         <entry key="..\:/Users/blanc/AndroidStudioProjects/sakanatti/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
-        <entry key="..\:/Users/blanc/AndroidStudioProjects/sakanatti/app/src/main/res/layout/activity_second.xml" value="0.2" />
-        <entry key="..\:/Users/blanc/AndroidStudioProjects/sakanatti/app/src/main/res/layout/activity_sub0.xml" value="0.2" />
-        <entry key="..\:/Users/haruy/Documents/sakanatti/app/src/main/res/layout/activity_fish.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/haruy/Documents/sakanatti/app/src/main/res/layout/activity_fish.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/haruy/Documents/sakanatti/app/src/main/res/layout/activity_main.xml" value="0.1118659420289855" />
         <entry key="..\:/Users/haruy/Documents/sakanatti/app/src/main/res/layout/activity_second.xml" value="0.11956521739130435" />
         <entry key="..\:/Users/haruy/Documents/sakanatti/app/src/main/res/layout/activity_sub0.xml" value="0.1" />
@@ -31,6 +20,9 @@
         <entry key="app/src/main/res/layout/activity_fishgame2.xml" value="0.17604166666666668" />
       </map>
     </option>
+  </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/sakanatti/FishView.kt" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
